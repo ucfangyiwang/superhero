@@ -1,0 +1,48 @@
+type Query {
+    searchHerobyName(name: String!): [Hero]
+    searchHerobyId(id: ID!): Hero
+    getSaveHeros:[Hero!]
+}
+type Mutation{
+    editHero (input:HeroInput):Hero
+    saveHero (input:HeroInput):Hero
+    deleteHerofromSave(id:ID!):Hero
+}
+
+type Hero{
+    id:ID!
+    name:String!
+    powerstats: PowerStats
+    image: Image
+}
+type PowerStats{
+    intelligence: String
+    strength: String
+    speed: String
+    durability: String
+    power: String
+    combat: String
+}
+
+type Image {
+    url: String
+}
+
+input HeroInput {
+    id: ID
+    name: String
+    powerstats: PowerStatsInput
+    image: ImageInput
+}
+
+input PowerStatsInput{
+    intelligence: String
+    strength: String
+    speed: String
+    durability: String
+    power: String
+    combat: String
+}
+input ImageInput {
+    url: String
+}
